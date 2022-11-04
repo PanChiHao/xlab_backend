@@ -1,0 +1,41 @@
+
+
+cd E:\MySQL\mysql-8.0.30-winx64
+
+mysql -u root -p        // 使用root连接
+     
+Enter password: ********
+
+create user 'todo'@'localhost' identified by '88328832';      // 创建新用户todo
+
+flush privileges;
+
+CREATE DATABASE todo;          // 创建新数据库todo
+
+grant all privileges on todo.* to todo@'localhost'；    // 赋予 todo 用户 todo 数据库的权限
+
+select user from mysql.user;
+
+show grants for todo@localhost;
+
+exit
+
+mysql -u todo -p        // 使用 todo 用户连接到数据库
+
+Enter password: ********
+
+use todo   // 切换到 todo 数据库
+
+create table `user`(                                                   // 创建一个新表 user
+`id` int(10) primary key not null auto_increment,
+`name` VARCHAR(30) not null
+);
+
+INSERT INTO user      // 向表内新加入一个用户 "qwq"
+(id, name)
+VALUES(1, 'qwq');
+
+delete from user where id=1;   // 删除这个用户
+
+
+
